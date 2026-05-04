@@ -1,66 +1,37 @@
+from typing import Dict, Set, NamedTuple
+from BaseClasses import ItemClassification
 
+class ItemData(NamedTuple):
+    category: str
+    code: int
+    count: int = 1
+    classification: ItemClassification = ItemClassification.filler
 
+item_table: Dict[str, ItemData] = {    
+    # Tacticals
+    'Cloak':       ItemData('Tactical',     72740000, 1, ItemClassification.filler),
+    'Pulse Blade': ItemData('Tactical',     72740001, 1, ItemClassification.filler),
+    'Grapple':     ItemData('Tactical',     72740002, 1, ItemClassification.filler),
+    'Stim':        ItemData('Tactical',     72740003, 1, ItemClassification.filler),
+    'A-Wall':      ItemData('Tactical',     72740004, 1, ItemClassification.filler),
+    'Phase Shift': ItemData('Tactical',     72740005, 1, ItemClassification.filler),
+    'Holo Pilot':  ItemData('Tactical',     72740006, 1, ItemClassification.filler),
+    'Time Shift':  ItemData('Tactical',     72740007, 1, ItemClassification.progression),
+    
+    # Titan loadouts
+    'Expedition': ItemData('Titan_Loadout', 72740008, 1, ItemClassification.filler),
+    'Tone':       ItemData('Titan_Loadout', 72740009, 1, ItemClassification.filler),
+    'Scorch':     ItemData('Titan_Loadout', 72740010, 1, ItemClassification.filler),
+    'Brute':      ItemData('Titan_Loadout', 72740011, 1, ItemClassification.filler),
+    'Ion':        ItemData('Titan_Loadout', 72740012, 1, ItemClassification.filler),
+    'Ronin':      ItemData('Titan_Loadout', 72740013, 1, ItemClassification.filler),
+    'Northstar':  ItemData('Titan_Loadout', 72740014, 1, ItemClassification.filler),
+    'Legion':     ItemData('Titan_Loadout', 72740015, 1, ItemClassification.filler),
+}
 
-
-'''
-Helments list (46):
-
-Gauntlet 1 
-
-BT-7274 1
-BT-7274 2
-
-Blood and Rust 1
-Blood and Rust 2
-Blood and Rust 3
-Blood and Rust 4
-Blood and Rust 5
-Blood and Rust 6
-
-Into the Abyss (1) 1
-Into the Abyss (1) 2
-Into the Abyss (1) 3
-Into the Abyss (1) 4
-
-Into the Abyss (2) 1
-Into the Abyss (2) 2
-Into the Abyss (2) 3
-
-Into the Abyss (3) 1
-Into the Abyss (3) 2
-
-Effect and Cause (1) 1
-Effect and Cause (1) 2
-
-Effect and Cause (2) 1
-Effect and Cause (2) 2
-Effect and Cause (2) 3
-Effect and Cause (2) 4
-Effect and Cause (2) 5
-Effect and Cause (2) 6
-
-The Beacon (1) 1
-The Beacon (1) 2
-
-The Beacon (2) 1
-The Beacon (2) 2
-The Beacon (2) 3
-The Beacon (2) 4
-The Beacon (2) 5
-The Beacon (2) 6
-The Beacon (2) 7
-The Beacon (2) 8
-The Beacon (2) 9
-
-Trail by Fire 1
-Trail by Fire 2
-Trail by Fire 3
-
-The Ark 1
-The Ark 2
-The Ark 3
-
-The Fold Weapon 1
-The Fold Weapon 2
-The Fold Weapon 3
-'''
+# This remains useful for Item Groups in your __init__.py
+def get_item_names_per_category() -> Dict[str, Set[str]]:
+    categories: Dict[str, Set[str]] = {}
+    for name, data in item_table.items():
+        categories.setdefault(data.category, set()).add(name)
+    return categories
