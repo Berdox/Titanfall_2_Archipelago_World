@@ -150,14 +150,12 @@ def get_locations(player: int) -> List[LocationData]:
         # --- Effect and Cause ---
         LocationData('Effect and Cause', 'Effect and Cause (1): Helmet 1', 72741024),
         LocationData('Effect and Cause', 'Effect and Cause (1): Helmet 2', 72741025),
-        
-        # Helmets in part 2 often require the Wrist Device
-        LocationData('Effect and Cause', 'Effect and Cause (2): Helmet 1', 72741026, lambda state: state.has("Time Shift", player)),
-        LocationData('Effect and Cause', 'Effect and Cause (2): Helmet 2', 72741027, lambda state: state.has("Time Shift", player)),
-        LocationData('Effect and Cause', 'Effect and Cause (2): Helmet 3', 72741028, lambda state: state.has("Time Shift", player)),
-        LocationData('Effect and Cause', 'Effect and Cause (2): Helmet 4', 72741029, lambda state: state.has("Time Shift", player)),
-        LocationData('Effect and Cause', 'Effect and Cause (2): Helmet 5', 72741030, lambda state: state.has("Time Shift", player)),
-        LocationData('Effect and Cause', 'Effect and Cause (2): Helmet 6', 72741031, lambda state: state.has("Time Shift", player)),
+        LocationData('Effect and Cause', 'Effect and Cause (2): Helmet 1', 72741026),
+        LocationData('Effect and Cause', 'Effect and Cause (2): Helmet 2', 72741027),
+        LocationData('Effect and Cause', 'Effect and Cause (2): Helmet 3', 72741028),
+        LocationData('Effect and Cause', 'Effect and Cause (2): Helmet 4', 72741029),
+        LocationData('Effect and Cause', 'Effect and Cause (2): Helmet 5', 72741030),
+        LocationData('Effect and Cause', 'Effect and Cause (2): Helmet 6', 72741031),
         LocationData('Effect and Cause', 'Mission Complete: Effect and Cause', 72741032),
 
         # --- The Beacon ---
@@ -197,3 +195,6 @@ def get_locations(player: int) -> List[LocationData]:
     ]
     
     return location_table
+
+# This is used by the World class for easy name lookup
+location_table = get_locations(0)

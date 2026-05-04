@@ -1,4 +1,4 @@
-from typing import Dict, Set, NamedTuple
+from typing import Dict, NamedTuple
 from BaseClasses import ItemClassification
 
 class ItemData(NamedTuple):
@@ -27,11 +27,7 @@ item_table: Dict[str, ItemData] = {
     'Ronin':      ItemData('Titan_Loadout', 72740013, 1, ItemClassification.filler),
     'Northstar':  ItemData('Titan_Loadout', 72740014, 1, ItemClassification.filler),
     'Legion':     ItemData('Titan_Loadout', 72740015, 1, ItemClassification.filler),
+    
+    # Tools
+    'ARC Tool':     ItemData('Tool', 72740016, 1, ItemClassification.progression),
 }
-
-# This remains useful for Item Groups in your __init__.py
-def get_item_names_per_category() -> Dict[str, Set[str]]:
-    categories: Dict[str, Set[str]] = {}
-    for name, data in item_table.items():
-        categories.setdefault(data.category, set()).add(name)
-    return categories
