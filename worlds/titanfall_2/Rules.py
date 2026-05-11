@@ -20,9 +20,13 @@ def create_rules(self):
         add_rule(multiworld.get_location(loc_name, player), 
                  lambda state: state.has("Time Shift", player))
 
-    # 2. Tool-Based Rules
-    add_rule(multiworld.get_location("The Beacon (2): Helmet 1", player),
-             lambda state: state.has("ARC Tool", player))
+    # 2. Locations in 'The Beacon' that require the ARC Tool
+    beacon_locations = [
+        "The Beacon (2): Helmet 1"
+    ]
+    for loc_name in time_travel_locations:
+        add_rule(multiworld.get_location(loc_name, player),
+                lambda state: state.has("ARC Tool", player))
 
     # 3. Boss Requirements
     '''
